@@ -15,11 +15,22 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <div ng-controller="MyController">
-    <h2>My AngularJS App</h2>
-    <input type="text" ng-model="name">
-    <h1>Hi, {{name}}!</h1>
+  <div ng-controller="ParentsController">
+    <div ng-controller="ChildController">
+      <h2>My AngularJS App</h2>
+      <input type="text" ng-model="person.name">
+      <h1>Hi, {{person.name | uppercase}}!</h1>
+      <a ng-click="sayHello()">Say Hello</a>
+    </div>
+  </div>
+  <div ng-controller="ShowDateController">
     <h3>{{clock}}</h3>
+  </div>
+  <div ng-controller="FirstController">
+    <h4>The simplest adding machine ever</h4>
+    <button class="button" ng-click="add(1)">Add</button>
+    <a ng-click="substract(1)" class="button alert">Substract</a>
+    <h5>Current count: {{counter}}</h5>
   </div>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
