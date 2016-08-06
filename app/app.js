@@ -1,14 +1,19 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+angular.module('myApp', [])
+.controller('MyController', function($scope){
+	$scope.clock = {
+		now: new Date()
+	};
+	
+	var updateClock = function(){
+		$scope.clock.now = new Date();
+	};
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+	setInterval(function(){
+		$scope.$apply(updateClock);
+	}, 1000);
+
+	updateClock();
+})
